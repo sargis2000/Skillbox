@@ -1,0 +1,22 @@
+your balance = {{ balance }}<br>
+<hr>
+
+{% for item in cart %}
+    product name-{{ item.product_name }}<br>
+    shop name-{{ item.magazine_name }}<br>
+    price-{{ item.price }}<br>
+    count-{{ item.quantity }}<br>
+    total price-{{ item.total_price }}<br>
+    <a methods="post" href="{% url 'cart_remove' product_id=item.product_id magazine_id=item.magazine_id %}">Delete  from list</a><br>
+    {% if balance > item.total_price%}
+        <form method="post" action="{% url 'buy_url' %}">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ item.product_id }}">
+            <input type="hidden" name="magazine_id" value="{{ item.magazine_id }}">
+            <button type="submit"> buy </button>
+        </form>
+        <hr>
+    {% else %}
+        <a href="{% url 'update_balance' %}">You need replenish Balance </a>
+    {% endif %}
+{% endfor %}

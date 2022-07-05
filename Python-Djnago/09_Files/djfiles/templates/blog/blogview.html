@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{%  for i in content %}
+    {{ i.title }}<br>
+    {{ i.content|truncatechars:100 }}<br>
+    {{ i.created_at}}<br>
+    <a href="{% url 'detail_view' i.id %}">VIEW</a>
+{% endfor %}
+</body>
+</html>

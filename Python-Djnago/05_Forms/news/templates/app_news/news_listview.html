@@ -1,0 +1,19 @@
+{% extends 'app_news/base.html' %}
+
+{% block title %}News{% endblock %}
+{% block content %}
+{% if  perms.app_news.add_news %}
+    <br>
+    <a href="{% url 'Create_news' %}">create news</a>
+{% endif %}
+<ul>
+    {% for i in news %}
+        <li><a href="{% url 'detailnews' i.id %}">{{ i.name }}</a></li>
+    {% endfor %}
+</ul>
+{% if message %}
+    {{ message }}
+{% endif %}
+<br>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+</head>
+<body>
+username  {{ content.user.username }}<br>
+name  {{ content.first_name }}<br>
+surname   {{ content.last_name }}<br>
+country  {{ content.country }}<br>
+phone  {{ content.phone }}<br>
+posted news count  {{ content.posted_news }}<br>
+{% if content.verified == 0 %}
+    not verified
+{% else %}
+    verified
+{% endif %}
+
+</body>
+</html>

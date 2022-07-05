@@ -1,0 +1,14 @@
+{%  extends 'base.html' %}
+{% load i18n %}
+    <meta charset="UTF-8">
+    {% block title %}{% trans 'Загрузка файла с ценами'  %}{% endblock %}
+
+{% block body %}
+<h2>{% trans 'Загрузка файла с ценами' %}</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">{% trans 'Загрузить файл' %}</button>
+</form>
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends 'news/base.html' %}
+
+{% block title %}News{% endblock %}
+{% block content %}
+    <form method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+        {{ search_form }}
+    <button type="submit"> search </button>
+    </form>
+    {% if search_result %}
+        {%  for i in search_result %}
+            {{ i }}
+        {% endfor %}
+        {% else %}
+        {% if  perms.app_news.add_news %}
+        <br>
+        <a href="{% url 'Create_news' %}">create news</a>
+        {% endif %}
+        <ul>
+        {% for i in news %}
+            <li><a href="{% url 'detailnews' i.id %}">{{ i.name }}</a></li>
+        {% endfor %}
+        </ul>
+        {% if message %}
+        {{ message }}
+        {% endif %}
+    {% endif %}
+<br>
+{% endblock %}
+

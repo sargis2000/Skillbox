@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Additional Info PAge</title>
+</head>
+<body>
+<form method="Post" action="{% url 'additional_view' %}">
+    {% csrf_token %}
+    {{ congratulation }}
+    {{ form }}
+
+    <button type="submit"> submit </button>
+</form>
+
+</body>
+</html>

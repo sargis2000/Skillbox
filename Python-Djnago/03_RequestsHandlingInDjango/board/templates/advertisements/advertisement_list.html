@@ -1,0 +1,29 @@
+<html>
+<ul>
+    <li>Мастер на час</li>
+    <li>Выведение из запоя</li>
+    <li>Услуги экскаватора-погрузчика, гидромолота, ямобура</li>
+    <li><a href="{% url 'ClassBasedView' %}">Check class based view</a></li>
+    <li><a href="{% url 'AboutView' %}">Check About TemplateView</a></li>
+    <li><a href="{% url 'ContactView' %}">Check Contact TemplateView</a></li>
+
+    <select>
+        {% for i in categories%}
+        <option>{{i}}</option>
+        {% endfor %}
+    </select>
+
+    <select>
+        {% for i in region%}
+        <option>{{i}}</option>
+        {% endfor %}
+    </select>
+
+    <form action="#" method="post">
+        {% csrf_token %}
+        <label for="search"> search </label><br>
+        <input type="text" id="search">
+        <input type="submit" value="Submit">
+    </form>
+</ul>
+</html>

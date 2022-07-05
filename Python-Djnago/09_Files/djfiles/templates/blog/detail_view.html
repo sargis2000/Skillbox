@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{ item.title }}<br>
+    {{ item.content }}<br>
+    {% for i in pictures %}
+        <img src="{{ i.image.url }}">
+    {% endfor %}
+    {{ item.created_at }}
+</body>
+</html>

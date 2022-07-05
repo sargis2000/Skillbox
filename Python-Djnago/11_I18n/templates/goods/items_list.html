@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}Список товаров {% endblock %}
+{% block body %}
+    <h1>Список товаров</h1>
+
+    {% if items_list %}
+        <table border="1">
+            <tbody>
+            <tr>
+                <td>{% trans 'Артикул' %}</td>
+                <td>{% trans 'Цена' %}</td>
+            </tr>
+            {% for item in items_list %}
+                <tr>
+                    <td>{{ item.code }}</td>
+                    <td>{{ item.price }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+    {% else %}
+        <p>{% trans 'Товаров нет.' %}</p>
+    {% endif %}
+{% endblock %}
+

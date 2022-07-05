@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ news.name }}</title>
+</head>
+<body>
+{{ news.name }}
+<br>
+{{ news.context }}
+<br>
+{{ news.created_at }}
+
+{% if perms.app_news.change_news %}
+    <br>
+    <h2><a href="{% url 'edit_data' news.id %}">change news</a></h2>
+{% endif %}
+
+<h2>Add comment</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Post!">
+</form>
+<br>
+{% for comment in comments %}
+    {{ comment.user_name }}
+    <br>
+    {{ comment.comment}}
+    <br>
+    {{ comment.created_on }}
+    <br>
+    <br>
+{% endfor %}
+
+
+</body>
+</html>

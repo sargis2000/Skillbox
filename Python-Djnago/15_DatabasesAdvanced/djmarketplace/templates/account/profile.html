@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+{% if form %}
+    <form method="post" action="{% url 'profile_url' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit"> submite</button>
+    </form>
+{% endif %}
+{% if balance_form %}
+    <form method="post" action="{% url 'update_balance' %}">
+        {% csrf_token %}
+        {{ balance_form }}
+        <button type="submit"> PAy</button>
+    </form>
+{% endif %}
+{% if profile %}
+    name:    {{ profile.user.last_name }}<br>
+    surname: {{ profile.user.first_name }}<br>
+    balance: {{ profile.balance }}<br>
+    <a href="{% url 'update_balance' %}">
+        <button type="submit"> update balance</button>
+    </a>
+{% endif %}
+{% if form.message %}
+    {{ form.message }}
+{% endif %}
+</body>
+</html>

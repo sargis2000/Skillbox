@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+</head>
+<body>
+{% for product in products %}
+    <ul>
+       товар {{  product.name }}  {{ product.price }}$
+        {% for i in product.market.all %}
+            <li>в магазине {{ i }}</li>
+            <form method="post" action="{% url 'cart_add' product_id=product.id magazine_id=i.id%}">
+            {% csrf_token %}
+             {{ form }}
+            <button type="submit">Add to Cart</button>
+            </form>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+</body>
+</html>
